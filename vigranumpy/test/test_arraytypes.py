@@ -1471,9 +1471,6 @@ def testMethods():
     assert_equal(ones.prod(), 1.0)
     assert (ones.prod(axis='y') == [1]*ones.shape[0]).all()
 
-    assert_equal(a.ptp(), a.size-1)
-    assert (a.ptp(axis='x') == [a.shape[0]-1]*a.shape[1]).all()
-
     r = arraytypes.ScalarImage((2,2))
     r.ravel()[...] = range(4)
 

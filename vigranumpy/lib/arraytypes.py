@@ -1436,23 +1436,6 @@ class VigraArray(numpy.ndarray):
         return _numpyarray_overloaded_function(numpy.ndarray.prod, self, axis, dtype, out)
 
     @_preserve_doc
-    def ptp(self, axis=None, out=None):
-        '''
-        The 'axis' parameter can be an int (axis position) or string (axis key).
-        '''
-        if type(axis) == str:
-            axis = self.axistags.index(axis)
-        if axis is None:
-            return numpy.ptp(self.transposeToOrder('C').view(numpy.ndarray), out=out)
-        else:
-            res = numpy.ptp(self.view(numpy.ndarray), axis=axis, out=out)
-            if out is None:
-                res = res.view(VigraArray)
-                res.axistags = self._copy_axistags()
-                del res.axistags[axis]
-            return res
-
-    @_preserve_doc
     def ravel(self, order='C'):
         '''
         The array is always transposed to 'C' order before flattening.

@@ -264,14 +264,6 @@ of 'numpy.ndarray'.
         return res
 
     @preserve_doc
-    def ptp(self, axis=None, out=None):
-        res = numpy.ndarray.ptp(self, axis, out)
-        if axis is not None:
-            res.axistags = res.copy_axistags()
-            del res.axistags[axis]
-        return res
-
-    @preserve_doc
     def ravel(self, order='C'):
         res = numpy.ndarray.ravel(self, order)
         res.axistags = res.default_axistags()

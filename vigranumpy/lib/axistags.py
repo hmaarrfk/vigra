@@ -88,12 +88,6 @@ class TaggedArray(np.ndarray):
             del res.axistags[axis]
         return res
 
-    def ptp(self, axis=None, out=None):
-        res = np.ndarray.ptp(self, axis, out)
-        if axis is not None:
-            del res.axistags[axis]
-        return res
-
     def ravel(self, order='C'):
         res = np.ndarray.ravel(self, order)
         res.axistags = [None]
